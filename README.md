@@ -11,7 +11,7 @@ The Ford-Fulkerson algorithm is utilized to find the maximum flow in a network. 
 #### Mathematical Representation
 The flow value `f` in the network must satisfy the following constraints:
 - Capacity Constraint: $f(u, v) \leq c(u, v)$
-- Flow Conservation: $$\sum_{v \in V} f(u, v) = 0 \), \forall \( u \neq s, t$$
+- Flow Conservation: $$\displaystyle{\sum_{v \in V}} f(u, v) = 0 \),\forall u \neq s, t$$
 
 
 ### Edmonds-Karp Algorithm
