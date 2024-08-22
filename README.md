@@ -28,3 +28,8 @@ Operations research focuses on optimizing complex operations and systems, which 
 - Telecommunications
 - Supply chain logistics
 - Resource allocation in cloud computing
+
+
+- **Python**: Primary programming language used for developing algorithms.
+- **NetworkX**: Utilized for managing and operating on graph data structures.
+- **Matplotlib**: For visualizing the network and flows within it.
