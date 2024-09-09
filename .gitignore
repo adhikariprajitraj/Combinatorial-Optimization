@@ -2,3 +2,4 @@ scratch*
 *.pdf
 system_process_flowchart
 *.xlsx
+/fingerprints
