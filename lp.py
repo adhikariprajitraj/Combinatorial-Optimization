@@ -8,7 +8,14 @@ model.x2 = pyomo.Var(within=pyomo.NonNegativeReals)
 model.c = pyomo.ConstraintList()
 model.c.add(model.x1*10 + 1 >= model.x2)
 model.c.add(model.x1*0.2 + 4 >= model.x2)
-model.c.add(mode.x1*(-0.2)+6 >= model.x2)
+model.c.add(model.x1*(-0.2)+6 >= model.x2)
 
-model.obj = pyomo.Objective(expr=model.x1 + model.x2*10, sense=pyomo.minimize)
+model.obj = pyomo.Objective(expr=model.x1 + model.x2*10, sense=pyomo.maximize)
 
+solver = pyomo.SolverFactory('gurobi')
+
+result = solver.solve(model)
+
+print(result)
+
+print(model.x1(), model.x2())
