@@ -24,5 +24,7 @@ solver = pyomo.SolverFactory('gurobi')
 result = solver.solve(model)
 
 print(result)
+#print(model.x1(), model.x2())
+#print(model.obj())
 
-print(model.x1(), model.x2())
+print(f"Objective function value: {model.obj()} with x1 = {model.x1()} and x2 = {model.x2()}.")
