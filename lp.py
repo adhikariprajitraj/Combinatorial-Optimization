@@ -10,9 +10,9 @@ model.x2 = pyomo.Var(within=pyomo.NonNegativeReals)
 
 # constraints here
 model.c = pyomo.ConstraintList()
-model.c.add(model.x1*10 + 1 >= model.x2)
-model.c.add(model.x1*0.2 + 4 >= model.x2)
-model.c.add(model.x1*(-0.2)+7.4 >= model.x2)
+model.c.add(model.x1 + model.x2 <= 10)  # Total resource constraint
+model.c.add(2*model.x1 + model.x2 <= 16)  # Production capacity constraint
+model.c.add(model.x1 >= 2)  # Minimum production requirement
 
 
 # objective function of the model
