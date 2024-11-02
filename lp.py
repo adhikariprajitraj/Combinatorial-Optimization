@@ -14,8 +14,12 @@ model.c.add(model.x1*10 + 1 >= model.x2)
 model.c.add(model.x1*0.2 + 4 >= model.x2)
 model.c.add(model.x1*(-0.2)+7.4 >= model.x2)
 
+
 # objective function of the model
-model.obj = pyomo.Objective(rule= lambda model: model.x1 + model.x2*10, sense=pyomo.maximize)
+model.obj = pyomo.Objective(
+    rule=lambda model: model.x1 + model.x2*10,
+    sense=pyomo.maximize
+)
 
 # calling the solver
 solver = pyomo.SolverFactory('gurobi')
@@ -24,7 +28,10 @@ solver = pyomo.SolverFactory('gurobi')
 result = solver.solve(model)
 
 print(result)
-#print(model.x1(), model.x2())
-#print(model.obj())
+# print(model.x1(), model.x2())
+# print(model.obj())
 
-print(f"Objective function value: {model.obj()} with x1 = {model.x1()} and x2 = {model.x2()}.")
+print(
+    f"Objective function value: {model.obj()} "
+    f"with x1 = {model.x1()} and x2 = {model.x2()}."
+)
