@@ -1,0 +1,29 @@
+Solver command line: ['/usr/local/bin/python3']
+
+Restricted license - for non-production use only - expires 2025-11-24
+Read LP format model from file /var/folders/17/xvl07b2n1kq7qscwxp63zc680000gn/T/tmp74pz1spj.pyomo.lp
+Reading time = 0.00 seconds
+x1: 34 rows, 22 columns, 65 nonzeros
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (mac64[arm] - Darwin 24.1.0 24B83)
+
+CPU model: Apple M1 Pro
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 34 rows, 22 columns and 65 nonzeros
+Model fingerprint: 0x79e5b5e0
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [5e-01, 2e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+01, 4e+01]
+Presolve removed 34 rows and 22 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    1.5000000e+01   0.000000e+00   6.000000e-01      0s
+Extra simplex iterations after uncrush: 2
+       2    1.5000000e+01   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.00 seconds (0.00 work units)
+Optimal objective  1.500000000e+01
+
