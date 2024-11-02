@@ -15,6 +15,7 @@ from scipy.interpolate import interp1d
 from dotenv import load_dotenv
 import os
 import seaborn as sns
+from matplotlib.gridspec import GridSpec
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
@@ -25,15 +26,15 @@ class EnergyArbitrageOptimizer:
 
     def __init__(
             self,
-            battery_capacity_kwh: float = 100.0,
-            max_power_kw: float = 20.0,
+            battery_capacity_kwh: float = 105.6,
+            max_power_kw: float = 23.8,
             battery_efficiency: float = 0.92,
-            initial_soc: float = 0.3,
-            min_soc: float = 0.1,
-            max_soc: float = 0.9,
+            initial_soc: float = 0.3,  # Initial state of charge
+            min_soc: float = 0.1, # Minimum state of charge
+            max_soc: float = 0.9, # Maximum state of charge
             cycle_life: int = 3000,            # Battery cycle life
             calendar_life_years: float = 10.0,  # Calendar life in years
-            battery_cost: float = 400.0,        # Cost per kWh of battery capacity
+            battery_cost: float = 499.99,        # Cost per kWh of battery capacity
             time_resolution: str = '15min'      # Time resolution for optimization
     ) -> None:
         """Initialize with realistic battery parameters."""
@@ -43,7 +44,7 @@ class EnergyArbitrageOptimizer:
         self.initial_soc = initial_soc
         self.min_soc = min_soc
         self.max_soc = max_soc
-        self.time_resolution = pd.Timedelta(time_resolution)
+        self.time_resolution = pd.Timedelta(time_resolution) # Time resolution for optimization
         
         # Advanced battery parameters
         self.cycle_life = cycle_life
@@ -116,8 +117,12 @@ class EnergyArbitrageOptimizer:
         # Process API response (implement actual data processing)
         data = response.json()
         # Convert to DataFrame...
+        df = pd.DataFrame(data['series'][0]['data'])
+        df.columns = ['datetime', 'price']
+        df['datetime'] = pd.to_datetime(df['datetime'])
+        return df
         
-        return pd.DataFrame()  # Placeholder
+
 
     def _generate_synthetic_prices(self, start_date: datetime, end_date: datetime) -> pd.DataFrame:
         """Generate realistic synthetic price data with multiple components."""
@@ -252,8 +257,8 @@ class EnergyArbitrageOptimizer:
     def _solve_model(self) -> bool:
         """Solve the optimization model with enhanced error handling."""
         try:
-            # Use GLPK solver with no additional options
-            solver = pyo.SolverFactory('glpk')
+            # Use Gurobi solver with no additional options
+            solver = pyo.SolverFactory('gurobi')
             
             # Simple solve call without any options
             self.results = solver.solve(self.model, tee=True)  # Set tee=True to see solver output
@@ -314,7 +319,7 @@ class EnergyArbitrageOptimizer:
             # Create figure and subplots
             plt.style.use('default')
             fig = plt.figure(figsize=(15, 12))
-            gs = plt.GridSpec(3, 1, height_ratios=[2, 1.5, 1])
+            gs = GridSpec(3, 1, height_ratios=[2, 1.5, 1])
 
             # Plot 1: Prices and Power
             ax1 = fig.add_subplot(gs[0])
