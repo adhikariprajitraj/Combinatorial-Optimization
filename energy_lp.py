@@ -20,7 +20,7 @@ from matplotlib.gridspec import GridSpec
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
+ 
 class EnergyArbitrageOptimizer:
     """Optimize battery storage operation for continuous electricity price arbitrage."""
 
@@ -391,15 +391,15 @@ def main():
     try:
         # Initialize optimizer with realistic parameters
         optimizer = EnergyArbitrageOptimizer(
-            battery_capacity_kwh=100,
-            max_power_kw=20,
+            battery_capacity_kwh=105,
+            max_power_kw=26,
             battery_efficiency=0.92,
-            initial_soc=0.3,
+            initial_soc=0.32,
             min_soc=0.1,
             max_soc=0.9,
-            cycle_life=3000,
-            calendar_life_years=10,
-            battery_cost=400,
+            cycle_life=3500,
+            calendar_life_years=8,
+            battery_cost=499,
             time_resolution='15min'
         )
 

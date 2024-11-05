@@ -27,6 +27,7 @@ The project includes an energy arbitrage optimization model that maximizes profi
 - State of charge management
 
 ### Optimization Results
+ > Results are changed each time iteration is run since I am manipulating data.
 The model achieves significant profit optimization while maintaining battery health:
 - Net Profit: $53.35
 - Energy Charged: 174.3 kWh
