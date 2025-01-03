@@ -6,7 +6,7 @@ model = Model("Production Optimization")
 # Step 2: Define Decision Variables
 # Variables x and y represent the units of Product A and B respectively
 x = model.addVar(name="Product_A", vtype=GRB.CONTINUOUS, lb=0)
-y = model.addVar(name="Product_B", vtype=GRB.CONTINUOUS, lb=0)
+y = model.addVar(name="Product_B", vtype=GRB.INTEGER, lb=0)
 
 # Step 3: Set the Objective Function
 # Objective: Maximize profit = 20x + 30y
